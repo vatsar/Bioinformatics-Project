@@ -1,2 +1,7 @@
 # Firstly we will use the download.file function to download the file and then use destfile function to give a location to the downloaded file
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", destfile = "gene_expression.tsv")
+
+# Question 1. Read in the file, making the gene accession numbers the row names. Show a table of values for the first six genes.
+gene <- read.table("gene_expression.tsv")
+head(gene) # Show a table of value for the first six genes
+str(gene)
