@@ -1,0 +1,2 @@
+# Firstly we will use the download.file function to download the file and then use destfile function to give a location to the downloaded file
+download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", destfile = "gene_expression.tsv")
