@@ -12,5 +12,12 @@ gene <- read.table("gene_expression.tsv" , header = TRUE, stringsAsFactors = FAL
 gene$Means <- rowMeans(gene)
 head(gene)
 str(gene)
-str
+str()
+
+# Question 3. List the 10 genes with highest gene expression
+order(gene$Mean)
+gene[order(gene$Mean), ]
+gene[order(-gene$Mean), ]
+head(gene[order(-gene$Mean), ])
+head(gene[order(-gene$Mean),],10)
 
