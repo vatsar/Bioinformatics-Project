@@ -20,4 +20,4 @@ gene[order(gene$Mean), ]
 gene[order(-gene$Mean), ]
 head(gene[order(-gene$Mean), ])
 head(gene[order(-gene$Mean),],10)
-head
+
