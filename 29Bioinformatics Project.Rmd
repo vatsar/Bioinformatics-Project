@@ -12,7 +12,6 @@ gene <- read.table("gene_expression.tsv" , header = TRUE, stringsAsFactors = FAL
 gene$Means <- rowMeans(gene)
 head(gene)
 str(gene)
-str()
 
 # Question 3. List the 10 genes with highest gene expression
 order(gene$Mean)
@@ -22,7 +21,8 @@ head(gene[order(-gene$Mean), ])
 head(gene[order(-gene$Mean),],10)
 
 # Question 4. Determine the number of genes with a mean <10.
-subset(gene,Mean<10)
-filtered<- subset(gene,Mean<10)
+subset(gene, Mean<10)
+filtered <- subset(gene,Mean<10)
 nrow(filtered)
+
 
