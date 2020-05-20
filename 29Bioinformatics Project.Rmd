@@ -21,3 +21,8 @@ gene[order(-gene$Mean), ]
 head(gene[order(-gene$Mean), ])
 head(gene[order(-gene$Mean),],10)
 
+# Question 4. Determine the number of genes with a mean <10.
+subset(gene,Mean<10)
+filtered<- subset(gene,Mean<10)
+nrow(filtered)
+
