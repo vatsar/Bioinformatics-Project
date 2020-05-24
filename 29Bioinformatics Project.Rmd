@@ -69,11 +69,10 @@ boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)", main="Growth at two plantation sites")
 
 # Question 9. Calculate the mean growth over the past 10 years at eah site.
+NE$growth <-NE$Circumf_2009_cm
+head(NE)
 
-ne$growth <-ne$Circumf_2009_cm
-head(ne)
-
-sw$growth <-sw$Circumf_2019_cm-sw$Circumf_2009_cm
-head(sw)
+SW$growth <-SW$Circumf_2019_cm-SW$Circumf_2009_cm
+head(SW)
 
 
