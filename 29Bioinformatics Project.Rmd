@@ -61,3 +61,10 @@ mean(SW$Circumf_2004_cm)
 mean(SW$Circumf_2019_cm)
 sd(SW$Circumf_2004_cm)
 sd(SW$Circumf_2019_cm)
+
+# Question 8. Make a box plot of tree circumference at the start and end of the study at both sites.
+boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm)
+boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm)
+boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)")
+boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)", main="Growth at two plantation sites")
+
