@@ -37,3 +37,27 @@ head(gd)
 str(gd)
 colnames(gd)
 
+# Question 7. Calculate the mean and standard deviation of tree circumferance at the start and end of the study at the both sides.
+# We will begin solving the problem with northeast and then shift our focus to southwest.
+gd<-read.csv("growth_data.csv")
+subset(gd,Site=="northeast")
+NE <- subset(gd,Site=="northeast")
+head(NE)
+tail(NE)
+str(NE)
+mean(NE$Circumf_2004_cm)
+mean(NE$Circumf_2019_cm)
+sd(NE$Circumf_2004_cm)
+sd(NE$Circumf_2019_cm)
+
+#Now we will calculate the values of mean and standard deviation for the southwest.
+gd<-read.csv("growth-data.csv")
+subset(gd,Site=="southwest")
+SW <- subset(gd,Site=="southwest")
+head(SW)
+tail(SW)
+str(SW)
+mean(SW$Circumf_2004_cm)
+mean(SW$Circumf_2019_cm)
+sd(SW$Circumf_2004_cm)
+sd(SW$Circumf_2019_cm)
