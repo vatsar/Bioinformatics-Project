@@ -76,3 +76,4 @@ head(ne)
 sw$growth <-sw$Circumf_2019_cm-sw$Circumf_2009_cm
 head(sw)
 
+
