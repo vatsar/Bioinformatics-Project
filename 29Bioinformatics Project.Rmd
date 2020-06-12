@@ -2,20 +2,20 @@
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", destfile = "gene_expression.tsv")
 
 # Question 1. Read in the file, making the gene accession numbers the row names. Show a table of values for the first six genes.
-# We will use read.table function to convert and read the values in tabular format
+# We will use read.table function to convert and read the values in tabular format.
 gene <- read.table("gene_expression.tsv")
 head(gene) # Show a table of value for the first six genes
 str(gene)
 
 # Question 2. Make a new column which is the mean of the other columns. Show a table of values for the first six genes.
-
+# We will use the gene$Mean function to add a columns of mean values and then rowMean function will add the mean values to the columns.
 gene <- read.table("gene_expression.tsv" , header = TRUE, stringsAsFactors = FALSE, row.names = 1)
 gene$Means <- rowMeans(gene)
 head(gene)
 str(gene)
 
 # Question 3. List the 10 genes with highest gene expression
-
+# We will use order function to arrange values in an ascending order and a "-" will be used to determine highest mean expression and also arranges them from higher to lower. Header is attributed with 10 in order to get only 10 values. 
 order(gene$Mean)
 gene[order(gene$Mean), ]
 gene[order(-gene$Mean), ]
