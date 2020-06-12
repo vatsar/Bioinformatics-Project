@@ -136,6 +136,7 @@ g_data <- DNAString(c2s(gdata))
 aln <- Biostrings::pairwiseAlignment(g_data,gdata_mutation2)
 pid(aln)
 nmismatch(aln)
+```
 
 
 
