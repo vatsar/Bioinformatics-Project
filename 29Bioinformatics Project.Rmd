@@ -2,19 +2,20 @@
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", destfile = "gene_expression.tsv")
 
 # Question 1. Read in the file, making the gene accession numbers the row names. Show a table of values for the first six genes.
+# We will use read.table function to convert and read the values in tabular format.
 gene <- read.table("gene_expression.tsv")
 head(gene) # Show a table of value for the first six genes
 str(gene)
 
 # Question 2. Make a new column which is the mean of the other columns. Show a table of values for the first six genes.
-
+# We will use the gene$Mean function to add a columns of mean values and then rowMean function will add the mean values to the columns.
 gene <- read.table("gene_expression.tsv" , header = TRUE, stringsAsFactors = FALSE, row.names = 1)
 gene$Means <- rowMeans(gene)
 head(gene)
 str(gene)
 
 # Question 3. List the 10 genes with highest gene expression
-
+# We will use order function to arrange values in an ascending order and a "-" will be used to determine highest mean expression and also arranges them from higher to lower. Header is attributed with 10 in order to get only 10 values. 
 order(gene$Mean)
 gene[order(gene$Mean), ]
 gene[order(-gene$Mean), ]
@@ -22,10 +23,12 @@ head(gene[order(-gene$Mean), ])
 head(gene[order(-gene$Mean),],10)
 
 # Question 4. Determine the number of genes with a mean <10.
+# We will use <10 and ,3 with gene function in order to get 
 gene[(gene[,3]<10),]
 nrow(gene)
 
 # Question 5. Make a histogram plot of the mean values in png format and paste it to your report.
+#
 hist(gene$Mean)
 hist(gene$Mean, breaks= 20)
 
@@ -63,22 +66,26 @@ sd(SW$Circumf_2004_cm)
 sd(SW$Circumf_2019_cm)
 
 # Question 8. Make a box plot of tree circumference at the start and end of the study at both sites.
+
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm)
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm)
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)")
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)", main="Growth at two plantation sites")
 
-# Question 9. Calculate the mean growth over the past 10 years at eah site.
+# Question 9. Calculate the mean growth over the past 10 years at each site.
 NE$growth <-NE$Circumf_2019_cm-NE$Circumf_2009_cm
 head(NE)
+mean(tail(NE$growth,n=10))
 
 SW$growth <-SW$Circumf_2019_cm-SW$Circumf_2009_cm
 head(SW)
+mean(tail(SW$growth,n=10))
 
-# Question 10.Use the t.test and wilcox.test functions to estimate the p-value that the 10 year growth is different atthe two sites.
+# Question 10.Use the t.test and wilcox.test functions to estimate the p-value that the 10 year growth is different at the two sites.
 t.test(SW$growth,NE$growth)
 wilcox.test(SW$growth,NE$growth)
 
+<<<<<<< HEAD
 
 
 Part 2 : Determine the limits of BLAST
@@ -138,5 +145,9 @@ pid(aln)
 nmismatch(aln)
 ```
 
+
+=======
+# Part 2: Determine the limits of BLAST
+# We need some packages to be able to work with R. So, first we will load them.
 
 
