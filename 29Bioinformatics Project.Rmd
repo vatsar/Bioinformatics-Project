@@ -28,6 +28,7 @@ gene[(gene[,3]<10),]
 nrow(gene)
 
 # Question 5. Make a histogram plot of the mean values in png format and paste it to your report.
+#
 hist(gene$Mean)
 hist(gene$Mean, breaks= 20)
 
@@ -65,6 +66,7 @@ sd(SW$Circumf_2004_cm)
 sd(SW$Circumf_2019_cm)
 
 # Question 8. Make a box plot of tree circumference at the start and end of the study at both sites.
+
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm)
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm)
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)")
@@ -77,7 +79,7 @@ mean(tail(NE$growth,n=10))
 
 SW$growth <-SW$Circumf_2019_cm-SW$Circumf_2009_cm
 head(SW)
-mean(tail(SE$growth,n=10))
+mean(tail(SW$growth,n=10))
 
 # Question 10.Use the t.test and wilcox.test functions to estimate the p-value that the 10 year growth is different at the two sites.
 t.test(SW$growth,NE$growth)
