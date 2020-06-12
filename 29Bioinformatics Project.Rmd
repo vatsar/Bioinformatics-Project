@@ -79,3 +79,63 @@ head(SW)
 t.test(SW$growth,NE$growth)
 wilcox.test(SW$growth,NE$growth)
 
+
+
+Part 2 : Determine the limits of BLAST
+
+
+# Question 1. Download the whole set of E. coli gene DNA sequence and use gunzip to decompress. Use the makeblast() function to cfreat a blast database. Howmany sequences are presesnt in the E. coli set?
+
+download.file("ftp://ftp.ensemblgenomes.org/pub/bacteria/release-42/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/cds/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.cds.all.fa.gz", destfile = "Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.cds.all.fa.gz")
+
+#we will decompress the data by gunzip
+R.utils::gunzip("Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.cds.all.fa.gz", overwrite= TRUE)
+
+#using the makeblast()to creating the blast distance
+makeblastdb("Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.cds.all.fa",dbtype = "nucl","-parse_seqids")
+
+
+
+#Question 2 : Download the sample fasta sequences and read them in as above. For your allocated sequence,determine the length (in bp) and the proportion of GC bases.
+
+download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part2_files/sample.fa",destfile = "sample.fa")
+
+
+#we will download the file
+data <- read.fasta("sample.fa")
+
+#using my idnumber to save my data
+Gdata <- Gdata[[65]]
+
+#now we will check the str
+str(Gdata)
+Gdata[1:50]
+
+#we will check the length 
+seqinr::GC(Gdata)
+seqinr::getlength(Gdata)
+length(Gdata)
+
+#Question 3 : You will be provided with R functions to create BLAST databases and perform blast searches. Useblast to identify what E. coli gene your sequence matches best. Show a table of the top 3 hits includingpercent identity, E-value and bit scores
+
+download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part2_files/mutblast_functions.R",destfile = "mutblast.R")
+
+source("mutblast.R)
+myblastn_tab
+
+res <- myblastn_tab(myseq = gdata, db = "Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.cds.all.fa")
+
+first3 <- res[1:3]
+first3
+
+#Question 4 :You will be provided with a function that enables you to make a set number of point mutations to yoursequence of interest. Run the function and write an R code to check the number of mismatchesbetween the original and mutated sequence
+
+gdata_mutation <- mutator(myseq=gdata,100)
+gdata_mutation2 <- DNAString(c2s(gdata_mutation))
+g_data <- DNAString(c2s(gdata))
+aln <- Biostrings::pairwiseAlignment(g_data,gdata_mutation2)
+pid(aln)
+nmismatch(aln)
+
+
+
