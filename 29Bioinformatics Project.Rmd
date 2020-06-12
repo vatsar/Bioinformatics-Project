@@ -23,6 +23,7 @@ head(gene[order(-gene$Mean), ])
 head(gene[order(-gene$Mean),],10)
 
 # Question 4. Determine the number of genes with a mean <10.
+# We will use <10 and ,3 with gene function in order to get 
 gene[(gene[,3]<10),]
 nrow(gene)
 
@@ -69,14 +70,16 @@ boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)")
 boxplot(NE$Circumf_2004_cm, NE$Circumf_2019_cm, SW$Circumf_2004_cm, SW$Circumf_2019_cm, names = c("NE2004", "NE2019", "SW2004", "SW2019"), ylab="Circumfrence (cm)", main="Growth at two plantation sites")
 
-# Question 9. Calculate the mean growth over the past 10 years at eah site.
+# Question 9. Calculate the mean growth over the past 10 years at each site.
 NE$growth <-NE$Circumf_2019_cm-NE$Circumf_2009_cm
 head(NE)
+mean(tail(NE$growth,n=10))
 
 SW$growth <-SW$Circumf_2019_cm-SW$Circumf_2009_cm
 head(SW)
+mean(tail(SE$growth,n=10))
 
-# Question 10.Use the t.test and wilcox.test functions to estimate the p-value that the 10 year growth is different atthe two sites.
+# Question 10.Use the t.test and wilcox.test functions to estimate the p-value that the 10 year growth is different at the two sites.
 t.test(SW$growth,NE$growth)
 wilcox.test(SW$growth,NE$growth)
 
