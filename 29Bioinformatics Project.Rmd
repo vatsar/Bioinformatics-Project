@@ -151,7 +151,7 @@ nmut_value <-c(0,100,200,300,400,500,600,700)
 plot(nmut_value, proportions, main="rise the order")
 
 
-
+```
 
 
 
